@@ -21,13 +21,17 @@ struct Cli {
 
 fn main() {
 
+    // get command line args
     let args: Cli = Cli::parse();
     let length: u8 = get_pw_len(args.length);
     let num_pws: u8 = get_num_pws(args.num_passwords_generated);
     let ext_special: bool = get_ext_special(args.extended_special_chars);
-
     println!("\npw_length  \t\t{:?}\nextended_special_chars  {:?}\nnum_generated  \t\t{:?}\n", length, ext_special, num_pws);
-    generate_passwords(length, num_pws, ext_special);
+
+    // create and print passwords
+    let passwords: Vec<Vec<char>>;
+    passwords = generate_passwords(length, num_pws, ext_special);
+    print_passwords(passwords);
 }
 
 fn get_pw_len(pw_length: String) -> u8 {
@@ -35,7 +39,7 @@ fn get_pw_len(pw_length: String) -> u8 {
     let length: u8 = pw_length.parse::<u8>().unwrap_or_else(|_| panic!("Error: password length must be an integer between {}-{}, inclusive.", MIN_PW_LENGTH, MAX_PW_LENGTH));
 
     if length < MIN_PW_LENGTH || length > MAX_PW_LENGTH {
-        panic!("Error: password length must be an integer between {}-{}, inclusive.", MIN_PW_LENGTH, MAX_PW_LENGTH);
+        panic!("Error: password --length option must be an integer between {}-{}, inclusive.", MIN_PW_LENGTH, MAX_PW_LENGTH);
     }
 
     length
@@ -57,14 +61,16 @@ fn get_ext_special(ext_special_chars: String) -> bool {
     match ext_special_chars.to_lowercase().as_str() {
         "true" => return true,
         "false" => return false,
-        _ => panic!("Error: The input value for extended_special_chars can only be 'true' or 'false'.")
+        _ => panic!("Error: The input value for --extended_special_chars option can only be 'true' or 'false'.")
     }
 }
 
+fn print_passwords(passwords: Vec<Vec<char>>) {
 
-
-
-// for i in 0..length {
-//     print!("{}", password[i as usize]);
-// }
-// println!("");
+    for i in 0..passwords.len() {
+        for j in 0..passwords[i].len() {
+            print!("{}", passwords[i][j]);
+        }
+        println!("");
+    }
+}
