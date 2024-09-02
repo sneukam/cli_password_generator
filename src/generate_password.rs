@@ -1,6 +1,6 @@
 use rand::Rng;
 
-static ITERATION_RANGE: usize = 6_000_000;
+static RANDOMIZED_VECTOR_SIZE: usize = 10_000_000;
 
 const STANDARD: &[char] = &[
     'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r',
@@ -26,7 +26,7 @@ pub fn generate_passwords(length: u8, num_pws: u8, ext_special: bool) -> Vec<Vec
     // Fill a Vector (random_ints) with random integers in the range specified above.
     // This will be used later to select random characters from.
     let mut random_ints: Vec<u8> = Vec::<u8>::new();
-    for _i in 0..ITERATION_RANGE as usize {
+    for _i in 0..RANDOMIZED_VECTOR_SIZE as usize {
         let randomnum = rand::thread_rng().gen_range(0..range) as u8;
         random_ints.push(randomnum);
     }
