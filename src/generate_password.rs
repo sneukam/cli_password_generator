@@ -38,7 +38,7 @@ pub fn generate_passwords(length: u8, num_pws: u8, ext_special: bool) -> Vec<Vec
     for _i in 0..num_pws {
         let mut password: Vec<char> = Vec::<char>::new();
         for _j in 0..length {
-            let rand_selection = rand::thread_rng().gen_range(0..ITERATION_RANGE);
+            let rand_selection = rand::thread_rng().gen_range(0..RANDOMIZED_VECTOR_SIZE);
             let char_num = random_ints[rand_selection];
             let rand_char = get_char(char_num as usize);
             password.push(rand_char);
