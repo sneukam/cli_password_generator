@@ -93,7 +93,7 @@ $ cargo run --release -- --extended-special-chars false
 
 ## About
 
-I made this program because I was dissatisfied with all the password generators I had used. Subjectively viewing those passwords side-by-side with known high-complexity password generators, clearly showed the others were lacking. The true high complexity password generators were local-database password managers, and by design choices, made them inconvenient to use solely for password generation. Thus, here we are.
+I made this program because I was dissatisfied with the password generators I had used. Subjectively viewing those passwords side-by-side with known high-complexity password generators, clearly showed they were lacking. The true high complexity password generators were local-database-only password managers, and by design choices, made them inconvenient to use solely for password generation. Thus, here we are.
 
 
 ## License

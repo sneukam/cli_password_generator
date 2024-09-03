@@ -13,8 +13,10 @@ static MAX_NUM_PWS_GENERATED: u8 = 30;
 struct Cli {
     #[arg(short, long, default_value = "45")]
     length: String,
+
     #[arg(short, long, default_value = "true")]
     extended_special_chars: String,
+
     #[arg(short, long, default_value = "10")]
     num_passwords_generated: String
 }
